@@ -1,0 +1,10 @@
+# R artifacts
+.Rhistory
+.RData
+.Ruserdata
+
+# Results
+results/
+
+# macOS
+.DS_Store
