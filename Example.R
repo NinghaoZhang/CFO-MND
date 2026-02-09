@@ -1,6 +1,9 @@
-path <- '/Users/zhangninghao/Desktop/CFO-MND code'
-setwd(path)
+path <- normalizePath(".", winslash = "/", mustWork = TRUE)
 source("MND_utils.R")
+source("CFOMND_simu.R")
+source("CFOMND_simu_rand.R")
+source("MND.next.R")
+source("MND.select.R")
 library(pbapply)
 library(pbmcapply)
 
@@ -44,18 +47,18 @@ gamma <- 0.5
 
 
 #Example with_out placebo
-dir_path <- paste0(path, "results/test1")
+dir_path <- paste0(path, "/results/test1")
 CFOMND_simu(scs, nsim, dose.val, cutoff.eli, early.stop, effthreshold,
             cohortsize.stage1, cohortsize.stage2, ncohort.stage1, ncohort.stage2, target,
             mineff, init.level, alp.prior.eff, bet.prior.eff, alp.prior, bet.prior,
             gamma, dir_path)
 
 #Example with placebo
-dir_path <- paste0(path, "results/test2")
+dir_path <- paste0(path, "/results/test2")
 CFOMND_simu(scs, nsim, dose.val, cutoff.eli, early.stop, effthreshold,
             cohortsize.stage1, cohortsize.stage2, ncohort.stage1, ncohort.stage2, target,
             mineff, init.level, alp.prior.eff, bet.prior.eff, alp.prior, bet.prior,
-            gamma, dir_path,TRUE)
+            gamma, dir_path, with_PED = TRUE)
 
 #Real Trial
 nsim <- 1000
@@ -81,7 +84,7 @@ gamma <- 0.5
 
 scs <- list()
 scs[[1]] <- list(p.true=c(0.03, 0.04, 0.33), q.true=c(0.85, 0.93, 0.63))
-dir_path <- paste0(path, "results/test3")
+dir_path <- paste0(path, "/results/test3")
 CFOMND_simu(scs, nsim, dose.val, cutoff.eli, early.stop, effthreshold,
             cohortsize.stage1, cohortsize.stage2, ncohort.stage1, ncohort.stage2, target,
             mineff, init.level, alp.prior.eff, bet.prior.eff, alp.prior, bet.prior,
@@ -112,9 +115,9 @@ ndata <- 50
 gamma <- 0.5
 mu.list <- c(0.23, 0.38, 0.53, 0.71)
 
-dir_path <- paste0(path, "results/test4/")
+dir_path <- paste0(path, "/results/test4/")
 for (mu in mu.list){
-  CFOMND_simu_rand(mu, ndata, ndose, dose.val, cutoff.eli, early.stop, effthreshold, 
+  CFOMND_simu_rand(mu, ndata, ndose, dose.val, cutoff.eli, early.stop, effthreshold,
                    cohortsize.stage1, cohortsize.stage2, ncohort.stage1, ncohort.stage2, target,
                    mineff, init.level, alp.prior.eff, bet.prior.eff, alp.prior, bet.prior, gamma, dir_path)
 }
@@ -133,7 +136,7 @@ ncohort.stage2 <- 4
 target <- 0.3
 gamma <- 0.5
 mineff <- 0.2
-placebo <- FALSE
-# result <- MND.next(ays, axs, ans, currdose, dose.val, cohortsize.stage1, cohortsize.stage2,
-#                    ncohort.stage1, ncohort.stage2, target, gamma, mineff, placebo)
-# print(result)
+PED <- FALSE
+result <- MND.next(ays, axs, ans, currdose, dose.val, cohortsize.stage1, cohortsize.stage2,
+                   ncohort.stage1, ncohort.stage2, target, gamma, mineff, PED)
+print(result)
