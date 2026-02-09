@@ -1,6 +1,6 @@
 # CFO-MND
 
-CFO-MND is a two-stage dose-finding workflow to identify the **MND** by CFO and efficacy-driven allocation.
+CFO-MND is a two-stage dose-finding workflow to identify the minimum noninferiority dose (MND).
 
 ## Repository Structure
 
