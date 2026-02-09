@@ -2,9 +2,6 @@
 
 CFO-MND is a two-stage dose-finding workflow to identify the **Most Novel Dose (MND)** by combining toxicity control (CFO) and efficacy-driven allocation.
 
-This repository has been synchronized with the local R package implementation at:
-`/Users/zhangninghao/Library/CloudStorage/OneDrive-TheUniversityofHongKong-Connect/R/R_package/CFO_MND_Rpackage/CFOMND`.
-
 ## Repository Structure
 
 - `MND_utils.R`: core utility functions (`MND.simu`, scenario generation/analysis utilities, `selectMND`, `CFO.next`, `CFO.selectmtd`).
@@ -95,13 +92,6 @@ Expected output file pattern:
 - `CFOMND_simu_rand(...)`: generate and run random scenarios.
 - `MND.next(...)`: recommend next dose during an ongoing trial.
 - `MND.select(...)`: select final MND after trial completion.
-
-## Verification (February 9, 2026)
-
-Local smoke tests executed successfully:
-- Loaded `MND_utils.R`, `CFOMND_simu.R`, `CFOMND_simu_rand.R`, `MND.next.R`, `MND.select.R`.
-- `MND.next(...)` run succeeded (`nextdose=1`, `stage=stage2`).
-- `CFOMND_simu(...)` run succeeded **without predefining global control variables**, and generated `results/readme-check-v2/fix_1_5000.RData`.
 
 ## Full Example Script
 
