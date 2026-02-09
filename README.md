@@ -1,6 +1,6 @@
 # CFO-MND
 
-CFO-MND is a two-stage dose-finding workflow to identify the **Most Novel Dose (MND)** by combining toxicity control (CFO) and efficacy-driven allocation.
+CFO-MND is a two-stage dose-finding workflow to identify the **MND** by combining toxicity control (CFO) and efficacy-driven allocation.
 
 ## Repository Structure
 
